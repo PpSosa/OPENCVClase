@@ -1,0 +1,17 @@
+from skimage import io, draw  # type: ignore
+
+# Cargar la imagen
+img = io.imread("gatito.jpg")
+
+# Definir la función para dibujar un rectángulo
+def rectangle(x, y, w, h):
+    rr, cc = draw.polygon([x, x + w, x + w, x], [y, y, y + h, y + h])
+    return rr, cc
+
+# Dibujar el rectángulo en la imagen
+rr, cc = rectangle(100, 10, 120, 100)
+img[rr, cc] = 1
+
+# Mostrar la imagen
+io.imshow(img)
+io.show()
